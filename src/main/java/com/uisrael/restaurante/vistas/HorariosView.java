@@ -5,6 +5,7 @@
  */
 package com.uisrael.restaurante.vistas;
 
+import com.uisrael.restaurante.controlador.IHorariosControlador;
 import com.uisrael.restaurante.controlador.impl.HorariosControladorImpl;
 import com.uisrael.restaurante.modelo.entidad.Horarios;
 import java.io.Serializable;
@@ -27,7 +28,7 @@ public class HorariosView implements Serializable {
     private String recargo;
 
     private Horarios nuevoHorario;
-    private HorariosControladorImpl horarioControlador;
+    private IHorariosControlador  horarioControlador;
     private List<Horarios> listaHorario;
 
     public HorariosView() {
@@ -75,9 +76,15 @@ public class HorariosView implements Serializable {
         this.nuevoHorario = nuevoHorario;
     }
 
-    public HorariosControladorImpl getHorarioControlador() {
+    public IHorariosControlador getHorarioControlador() {
         return horarioControlador;
     }
+
+    public void setHorarioControlador(IHorariosControlador horarioControlador) {
+        this.horarioControlador = horarioControlador;
+    }
+
+
 
     public void setHorarioControlador(HorariosControladorImpl horarioControlador) {
         this.horarioControlador = horarioControlador;
@@ -106,7 +113,7 @@ public class HorariosView implements Serializable {
 
     public void listaHorario() {
         horarioControlador = new HorariosControladorImpl();
-        horarioControlador.listarPersonas();
+        listaHorario =  horarioControlador.listarPersonas();
     }
 
 }

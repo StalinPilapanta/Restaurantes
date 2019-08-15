@@ -8,23 +8,22 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-
     <h:head>
         <title>Horarios</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
         <h:form id="idFormularioHorarios">
-            <p:panel id="pIngresoHorarios" header="Ingreso Horarios" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+            <p:panel id="pIngresoHorarios" header="Ingreso de Horarios" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
                 <h:panelGrid  id="pgHorarios" columns="2">
 
                     <p:outputLabel id="olHorarios" value="Horario"></p:outputLabel>
                     <p:inputText id="itHorarios" value="#{horacore.hora}"></p:inputText>
 
-                    <p:outputLabel value="Recargo por Hora"></p:outputLabel>
+                    <p:outputLabel value="Recargo"></p:outputLabel>
                     <p:inputText value="#{horacore.recargo}"></p:inputText>
 
-                    <p:outputLabel value="Detalle del Horario"></p:outputLabel>
+                    <p:outputLabel value="Detalle del horario"></p:outputLabel>
                     <p:inputText value="#{horacore.detalle}"></p:inputText>
 
                 </h:panelGrid>
@@ -44,11 +43,17 @@ and open the template in the editor.
                         <p:outputLabel value="#{listadHorarios.idH}"></p:outputLabel>
                     </p:column>
                     
-                    <p:column headerText="Recargo" filterBy="#{listadHorarios.hora}" >
+                   
+                    
+                    <p:column headerText="Horario">
+                        <p:outputLabel value="#{listadHorarios.hora}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Recargo">
                         <p:outputLabel value="#{listadHorarios.recargo}"></p:outputLabel>
                     </p:column>
                     
-                    <p:column headerText="Detalle del Horario">
+                    <p:column headerText="Detalle del horario">
                         <p:outputLabel value="#{listadHorarios.detalle}"></p:outputLabel>
                     </p:column>
                     

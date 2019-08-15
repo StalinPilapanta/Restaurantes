@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Restaurantes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form id="idFormularioRestaurantes">
+            <p:panel id="pIngresoRestaurantes" header="Ingreso Restaurantes" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+                <h:panelGrid  id="pgRestaurantes" columns="2">
+
+                    <p:outputLabel id="olRestaurantes" value="Nombre"></p:outputLabel>
+                    <p:inputText id="itRestaurantes" value="#{rescore.nombreR}"></p:inputText>
+
+                    <p:outputLabel value="Direccion"></p:outputLabel>
+                    <p:inputText value="#{rescore.direccionR}"></p:inputText>
+
+                    <p:outputLabel value="Horario del restaurante"></p:outputLabel>
+                    <p:inputText value="#{rescore.horarioR}"></p:inputText>
+
+                    <p:outputLabel value="Precio Promedio"></p:outputLabel>
+                    <p:inputText value="#{rescore.precioPR}"></p:inputText>
+
+                    <p:outputLabel value="Acerca del Restaurante"></p:outputLabel>
+                    <p:inputText value="#{rescore.acercaR}"></p:inputText>
+                    
+                    <p:outputLabel value="Acerca del Restaurante"></p:outputLabel>
+                    <p:inputText value="#{rescore.caracteristicas}"></p:inputText>
+                </h:panelGrid>
+
+                <p:commandButton icon="fa fa-save" value="Guardar" action="#{rescore.insertarRestaurante()}" update="idFormularioRestaurantes"></p:commandButton>
+                <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
+                <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
+
+            </p:panel>
+
+            <p:panel>
+
+                <p:dataTable id="listadRestaurante" value="#{rescore.listaRestaurante}" var="listadRestaurante" widgetVar="listadRestaurante" 
+                             scrollable="trye" rows="10" scrollRows="20" paginator="true">
+
+                    <p:column headerText="Codigo" filterBy="#{listadRestaurante.idRes}">
+                        <p:outputLabel value="#{listadRestaurante.idRes}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Nombre" filterBy="#{listadRestaurante.nombreR}" >
+                        <p:outputLabel value="#{listadRestaurante.nombreR}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Direccion">
+                        <p:outputLabel value="#{listadRestaurante.direccionR}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Horario del restaurante">
+                        <p:outputLabel value="#{listadRestaurante.horarioR}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Precio promedio">
+                        <p:outputLabel value="#{listadRestaurante.precioPR}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Acerca del restaurante">
+                        <p:outputLabel value="#{listadRestaurante.acercaR}"></p:outputLabel>
+                    </p:column>
+
+
+                    <p:column headerText="Caracteristicas del restaurante">
+                        <p:outputLabel value="#{listadRestaurante.caracteristicas}"></p:outputLabel>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </h:body>
+</html>

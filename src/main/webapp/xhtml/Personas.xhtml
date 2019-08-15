@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Personas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        
+                <h:form id="idFormularioPersonas">
+                    <p:panel id="pIngresoPersonas" header="Ingreso Personas" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+                        <h:panelGrid  id="pgPersonas" columns="2">
+
+                            <p:outputLabel id="olPersonas" value="Identificacion"></p:outputLabel>
+                            <p:inputText id="itPersonas" value="#{percore.identificacionP}"></p:inputText>
+
+                            <p:outputLabel value="Nombre"></p:outputLabel>
+                            <p:inputText value="#{percore.nombresP}"></p:inputText>
+
+                            <p:outputLabel value="Apellido"></p:outputLabel>
+                            <p:inputText value="#{percore.apellidosP}"></p:inputText>
+
+                            <p:outputLabel value="Direccion"></p:outputLabel>
+                            <p:inputText value="#{percore.direccionP}"></p:inputText>
+
+                            <p:outputLabel value="Telefono"></p:outputLabel>
+                            <p:inputText value="#{percore.telefono}"></p:inputText>
+                        </h:panelGrid>
+
+                        <p:commandButton icon="fa fa-save" value="Guardar" action="#{percore.insertarPersona()}" update="idFormularioPersonas"></p:commandButton>
+                        <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
+                        <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
+
+                    </p:panel>
+
+                    <p:panel>
+
+                        <p:dataTable id="listadPersonas" value="#{percore.listaPersona}" var="listadPersonas" widgetVar="listadPersonas" 
+                                     scrollable="trye" rows="10" scrollRows="20" paginator="true">
+
+                            <p:column headerText="Codigo" filterBy="#{listadPersonas.idPersona}">
+                                <p:outputLabel value="#{listadPersonas.idPersona}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Identificacion" >
+                                <p:outputLabel value="#{listadPersonas.identificacionP}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Nombre" filterBy="#{listadPersonas.nombresP}">
+                                <p:outputLabel value="#{listadPersonas.nombresP}"></p:outputLabel>
+                            </p:column>
+                            <p:column headerText="Apellido">
+                                <p:outputLabel value="#{listadPersonas.apellidosP}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Direccion">
+                                <p:outputLabel value="#{listadPersonas.direccionP}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Telefono">
+                                <p:outputLabel value="#{listadPersonas.telefono}"></p:outputLabel>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+
+    </h:body>
+</html>

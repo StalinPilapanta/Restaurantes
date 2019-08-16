@@ -4,6 +4,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.uisrael.restaurante.modelo.entidad.Personas</class>
     <class>com.uisrael.restaurante.modelo.entidad.Restaurantes</class>
+    <class>com.uisrael.restaurante.modelo.entidad.Horarios</class>
+    <class>com.uisrael.restaurante.modelo.entidad.Mesa</class>
+    <class>com.uisrael.restaurante.modelo.entidad.Reservas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/restaurantes"/>

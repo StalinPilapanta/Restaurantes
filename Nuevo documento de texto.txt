@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Personas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <p:panel header="Perfiles">
+                <h:panelGrid>
+                    <p:commandButton value="Agregar" icon="fa fa-plus-square-o" type="button" onclick="PF('dlg1').show();"></p:commandButton>
+                </h:panelGrid>
+                <h:panelGrid>
+                    <p:dataTable id="listAllReservas" value="#{resercore.listExisteDatos}"  var="perfielUser"
+                                 paginator="true" paginatorPosition="bottom" >
+
+                        <p:column headerText="Nombre" filterBy="#{perfielUser.fkPersonas.nombresP}" >
+                            <p:outputLabel value="#{perfielUser.fkPersonas.nombresP}  "></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Apellido" filterBy="#{perfielUser.fkPersonas.apellidosP}" >
+                            <p:outputLabel value="#{perfielUser.fkPersonas.apellidosP} "></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Reserva" filterBy="#{rescore.nombreR}">
+                            <p:outputLabel value="#{rescore.nombreR}"></p:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+
+        <p:dialog  id="dbdialogo" header="Ingresar Persona" widgetVar="dlg1" minHeight="100" modal="true" appendTo="@(body)" resizable="false" >
+            <h:form id="frmReserva">
+                <p:growl id="messages" showDetail="true" />
+                <p:panel header="Asignar Reserva">
+
+                    <h:panelGrid columns="4">
+                        <p:outputLabel value="Reservas"></p:outputLabel>
+                        <p:selectOneMenu value="#{resercore.selectReservaNew.idR}"  >
+                            <f:selectItems value="#{resercore.listaPersona}" var="emp"
+                                           itemLabel="#{emp.nombresP}" itemValue="#{emp.idPersona}" />
+                            
+                        </p:selectOneMenu>
+                        <p:outputLabel id="result" value="Cambiar Algo" ></p:outputLabel>
+                        <p:commandButton value="Asignar" actionListener="#{resercore.asignar()}" update="frmReservas"></p:commandButton>
+                    </h:panelGrid>
+
+
+                    <h:panelGrid>
+
+                        <p:dataTable id="dtcPersonas" value="#{resercore.listaPersona}" var="listreserva" selection="#{resercore.selectListaPersonas}"
+                                     widgetVar="dtrersonas"
+                                     rows="20"
+                                     paginator="true"
+                                     paginatorPosition="bottom"
+                                     scrollable="true"
+                                     scrollRows="30"
+                                     scrollHeight="420"
+                                     rowKey="#{listreserva.idPersona}">
+
+                            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                            <p:column headerText="Id">
+                                <h:outputText value="#{listreserva.idPersona}" />
+                            </p:column>
+
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{listreserva.nombresP}" />
+                            </p:column>
+
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{listreserva.apellidosP}" />
+                            </p:column>
+
+                            <p:column headerText="Direccion">
+                                <h:outputText value="#{listreserva.direccionP}" />
+                            </p:column>
+                            <p:column headerText="Telefono">
+                                <h:outputText value="#{listreserva.telefono}" />
+                            </p:column>
+                            <f:facet name="paginatorTopLeft">
+                                <p:commandButton type="button" icon="pi pi-refresh" />
+                            </f:facet>
+
+                            <f:facet name="paginatorBottomRight">
+                                <p:commandButton type="button" icon="pi pi-cloud-upload"/>
+                            </f:facet>
+
+                        </p:dataTable>
+
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>

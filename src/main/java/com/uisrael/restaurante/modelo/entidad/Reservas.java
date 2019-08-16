@@ -31,16 +31,21 @@ public class Reservas implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RSEQ")
     private int idR;
-    private Date fechaReserva;
+    private String fechaReserva;
     private int estado;
     
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "fkidReservas")
     private Personas fkPersonas;
 
-    @Override
-    public String toString() {
-        return "Reservas{" + "idR=" + idR + ", fechaReserva=" + fechaReserva + ", estado=" + estado + ", fkPersonas=" + fkPersonas + '}';
+    public Reservas() {
+    }
+
+    public Reservas(int idR, String fechaReserva, int estado, Personas fkPersonas) {
+        this.idR = idR;
+        this.fechaReserva = fechaReserva;
+        this.estado = estado;
+        this.fkPersonas = fkPersonas;
     }
 
     public int getIdR() {
@@ -51,11 +56,11 @@ public class Reservas implements Serializable{
         this.idR = idR;
     }
 
-    public Date getFechaReserva() {
+    public String getFechaReserva() {
         return fechaReserva;
     }
 
-    public void setFechaReserva(Date fechaReserva) {
+    public void setFechaReserva(String fechaReserva) {
         this.fechaReserva = fechaReserva;
     }
 
@@ -74,8 +79,12 @@ public class Reservas implements Serializable{
     public void setFkPersonas(Personas fkPersonas) {
         this.fkPersonas = fkPersonas;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Reservas{" + "idR=" + idR + ", fechaReserva=" + fechaReserva + ", estado=" + estado + ", fkPersonas=" + fkPersonas + '}';
+    }
+
     
     
     

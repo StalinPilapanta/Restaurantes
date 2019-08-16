@@ -5,19 +5,18 @@
  */
 package com.uisrael.restaurante.modelo.dao;
 
-import com.uisrael.restaurante.modelo.entidad.Personas;
+import com.uisrael.restaurante.modelo.entidad.Mesa;
 import java.util.List;
 
 /**
  *
  * @author Stalin
  */
-public interface IPersonasDao {
-    
-    public void insertarPersonas(Personas nuevoPersonas);
+public interface IMesaDao {
 
-    public List<Personas> listarPersonas();
+    public void insertarMesa(Mesa nuevoMesa);
 
-    public boolean actualizarPersonas(Personas atualizaPersonas);
+    public List<Mesa> listarMesa();
 
+    public boolean actualizarMesa(Mesa atualizaMesa);
 }

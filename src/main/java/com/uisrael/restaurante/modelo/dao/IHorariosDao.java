@@ -13,7 +13,7 @@ import java.util.List;
  * @author Stalin
  */
 public interface IHorariosDao {
-    public void insertarPersonas(Horarios nuevoHorarios);
+    public void insertarHorarios(Horarios nuevoHorarios);
 
     public List<Horarios> listarHorarios();
 

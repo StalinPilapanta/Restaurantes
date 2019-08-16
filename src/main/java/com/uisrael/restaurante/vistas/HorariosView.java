@@ -107,13 +107,13 @@ public class HorariosView implements Serializable {
         nuevoHorario.setDetalle(detalle);
 
         horarioControlador = new HorariosControladorImpl();
-        horarioControlador.insertarPersonas(nuevoHorario);
+        horarioControlador.insertarHorarios(nuevoHorario);
         listaHorario();
     }
 
     public void listaHorario() {
         horarioControlador = new HorariosControladorImpl();
-        listaHorario =  horarioControlador.listarPersonas();
+        listaHorario =  horarioControlador.listarHorarios();
     }
 
 }

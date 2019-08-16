@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Mesas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form id="idFormularioMesas">
+            <p:panel id="pIngresoMesas" header="Ingreso de Mesas" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+                <h:panelGrid  id="pgMesas" columns="2">
+
+                    <p:outputLabel id="olMesas" value="Numero Mesa"></p:outputLabel>
+                    <p:inputText id="itMesas" value="#{mesacore.numeroM}"></p:inputText>
+
+                    <p:outputLabel value="Ubicación"></p:outputLabel>
+                    <p:inputText value="#{mesacore.ubicacionM}"></p:inputText>
+
+                    <p:outputLabel value="Detalle Mesa"></p:outputLabel>
+                    <p:inputText value="#{mesacore.detalleM}"></p:inputText>
+
+                </h:panelGrid>
+
+                <p:commandButton icon="fa fa-save" value="Guardar" action="#{mesacore.insertarMesa()}" update="idFormularioMesas"></p:commandButton>
+                <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
+                <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
+
+            </p:panel>
+
+            <p:panel>
+
+                <p:dataTable id="listadMesas" value="#{mesacore.listaMesa}" var="listadMesas" widgetVar="listadMesas" 
+                             scrollable="trye" rows="10" scrollRows="20" paginator="true">
+
+                    <p:column headerText="Codigo" filterBy="#{listadMesas.idMesa}">
+                        <p:outputLabel value="#{listadMesas.idMesa}"></p:outputLabel>
+                    </p:column>
+                    
+                   
+                    
+                    <p:column headerText="Numero de Mesa">
+                        <p:outputLabel value="#{listadMesas.numeroM}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Ubicación">
+                        <p:outputLabel value="#{listadMesas.ubicacionM}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="Detalle Mesa">
+                        <p:outputLabel value="#{listadMesas.detalleM}"></p:outputLabel>
+                    </p:column>
+                    
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </h:body>
+</html>

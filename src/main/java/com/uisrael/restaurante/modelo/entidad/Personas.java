@@ -6,10 +6,14 @@
 package com.uisrael.restaurante.modelo.entidad;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,6 +35,9 @@ public class Personas implements Serializable{
     private String direccionP;
     private String emailP;
     private String telefono;
+    
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "fkPersonas")
+    private List<Reservas> fkidReservas;
 
     public Personas() {
     }
@@ -45,7 +52,14 @@ public class Personas implements Serializable{
         this.telefono = telefono;
     }
 
+    public List<Reservas> getFkidReservas() {
+        return fkidReservas;
+    }
 
+    public void setFkidReservas(List<Reservas> fkidReservas) {
+        this.fkidReservas = fkidReservas;
+    }
+    
     public int getIdPersona() {
         return idPersona;
     }

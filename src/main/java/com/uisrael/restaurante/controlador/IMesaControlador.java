@@ -5,18 +5,18 @@
  */
 package com.uisrael.restaurante.controlador;
 
-import com.uisrael.restaurante.modelo.entidad.Horarios;
+import com.uisrael.restaurante.modelo.entidad.Mesa;
 import java.util.List;
 
 /**
  *
  * @author Stalin
  */
-public interface IHorariosControlador {
+public interface IMesaControlador {
 
-    public boolean insertarHorarios(Horarios nuevoHorarios);
+    public boolean insertarMesa(Mesa nuevoMesa);
 
-    public List<Horarios> listarHorarios();
+    public List<Mesa> listarMesas();
 
-    public boolean actualizarHorarios(Horarios atualizaHorarios);
+    public boolean actualizarMesa(Mesa atualizaMesa);
 }

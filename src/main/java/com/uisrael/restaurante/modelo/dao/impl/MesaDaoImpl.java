@@ -5,8 +5,8 @@
  */
 package com.uisrael.restaurante.modelo.dao.impl;
 
-import com.uisrael.restaurante.modelo.dao.IHorariosDao;
-import com.uisrael.restaurante.modelo.entidad.Horarios;
+import com.uisrael.restaurante.modelo.dao.IMesaDao;
+import com.uisrael.restaurante.modelo.entidad.Mesa;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,41 +16,41 @@ import javax.persistence.criteria.Root;
  *
  * @author Stalin
  */
-public class HorariosDaoImpl extends GenericDaoImpl<Horarios> implements IHorariosDao{
+public class MesaDaoImpl extends GenericDaoImpl<Mesa> implements IMesaDao {
 
-    public HorariosDaoImpl(Class<Horarios> entityClass) {
+    public MesaDaoImpl(Class<Mesa> entityClass) {
         super(entityClass);
     }
 
-    
     @Override
-    public void insertarHorarios(Horarios nuevoHorarios) {
-        System.out.println("DAO: Insertó Horario" + nuevoHorarios);
+    public void insertarMesa(Mesa nuevoMesa) {
+        System.out.println("DAO: Insertó Mesa" + nuevoMesa);
         this.beginTransaction();
-        this.create(nuevoHorarios);
+        this.create(nuevoMesa);
         this.commit();
+
     }
 
     @Override
-    public List<Horarios> listarHorarios() {
+    public List<Mesa> listarMesa() {
         CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
-        CriteriaQuery<Horarios> p = cb.createQuery(Horarios.class);
-        Root<Horarios> horariosList = p.from(Horarios.class);
-        p.select(horariosList);
-        List<Horarios> lista = this.entityManager.createQuery(p).getResultList();
+        CriteriaQuery<Mesa> p = cb.createQuery(Mesa.class);
+        Root<Mesa> mesaList = p.from(Mesa.class);
+        p.select(mesaList);
+        List<Mesa> lista = this.entityManager.createQuery(p).getResultList();
         return lista;
     }
 
     @Override
-    public boolean actualizarHorarios(Horarios atualizaHorarios) {
-        try {
+    public boolean actualizarMesa(Mesa atualizaMesa) {
+       try {
             this.beginTransaction();
-            this.update(atualizaHorarios);
+            this.update(atualizaMesa);
             this.commit();
             return true;
         } catch (Exception e) {
             return false;
         }
     }
-    
+
 }

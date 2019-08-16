@@ -17,23 +17,24 @@ import java.util.List;
  */
 public class HorariosControladorImpl implements IHorariosControlador {
 
+
     @Override
-    public boolean insertarPersonas(Horarios nuevoPersonas) {
+    public boolean insertarHorarios(Horarios nuevoHorarios) {
         IHorariosDao horarioDao = new HorariosDaoImpl(Horarios.class);
-        horarioDao.insertarPersonas(nuevoPersonas);
+        horarioDao.insertarHorarios(nuevoHorarios);
         return true;
     }
 
     @Override
-    public List<Horarios> listarPersonas() {
+    public List<Horarios> listarHorarios() {
         IHorariosDao horarioDao = new HorariosDaoImpl(Horarios.class);
         return horarioDao.listarHorarios();
     }
 
     @Override
-    public boolean actualizarPersonas(Horarios atualizaPersonas) {
+    public boolean actualizarHorarios(Horarios atualizaHorarios) {
         IHorariosDao horarioDao = new HorariosDaoImpl(Horarios.class);
-        return horarioDao.actualizarHorarios(atualizaPersonas);
+        return horarioDao.actualizarHorarios(atualizaHorarios);
     }
 
 }

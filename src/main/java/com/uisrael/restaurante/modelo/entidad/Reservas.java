@@ -37,6 +37,45 @@ public class Reservas implements Serializable{
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "fkidReservas")
     private Personas fkPersonas;
+
+    @Override
+    public String toString() {
+        return "Reservas{" + "idR=" + idR + ", fechaReserva=" + fechaReserva + ", estado=" + estado + ", fkPersonas=" + fkPersonas + '}';
+    }
+
+    public int getIdR() {
+        return idR;
+    }
+
+    public void setIdR(int idR) {
+        this.idR = idR;
+    }
+
+    public Date getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public void setFechaReserva(Date fechaReserva) {
+        this.fechaReserva = fechaReserva;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public Personas getFkPersonas() {
+        return fkPersonas;
+    }
+
+    public void setFkPersonas(Personas fkPersonas) {
+        this.fkPersonas = fkPersonas;
+    }
+    
+    
     
     
     

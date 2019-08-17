@@ -6,10 +6,14 @@
 package com.uisrael.restaurante.modelo.entidad;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +31,7 @@ public class Mesa implements Serializable{
     private String ubicacionM;
     private String detalleM;
 
+    
     public Mesa() {
     }
 
@@ -37,6 +42,7 @@ public class Mesa implements Serializable{
         this.detalleM = detalleM;
     }
 
+    
     public int getIdMesa() {
         return idMesa;
     }

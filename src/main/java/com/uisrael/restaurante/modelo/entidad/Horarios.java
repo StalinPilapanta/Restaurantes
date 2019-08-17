@@ -6,10 +6,14 @@
 package com.uisrael.restaurante.modelo.entidad;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +31,7 @@ public class Horarios  implements Serializable{
     private String detalle;
     private String recargo;
 
+    
     public Horarios() {
     }
 
@@ -69,6 +74,8 @@ public class Horarios  implements Serializable{
         this.recargo = recargo;
     }
 
+
+    
     @Override
     public String toString() {
         return "Horarios{" + "idH=" + idH + ", hora=" + hora + ", detalle=" + detalle + ", recargo=" + recargo + '}';

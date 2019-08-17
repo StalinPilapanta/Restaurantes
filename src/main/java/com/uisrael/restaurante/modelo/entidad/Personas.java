@@ -38,8 +38,10 @@ public class Personas implements Serializable{
     
 
 
+
     public Personas() {
     }
+
 
     public Personas(int idPersona, String identificacionP, String nombresP, String apellidosP, String direccionP, String emailP, String telefono) {
         this.idPersona = idPersona;
@@ -51,8 +53,6 @@ public class Personas implements Serializable{
         this.telefono = telefono;
     }
 
-   
-    
     public int getIdPersona() {
         return idPersona;
     }
@@ -109,11 +109,12 @@ public class Personas implements Serializable{
         this.telefono = telefono;
     }
 
+    
+    
     @Override
     public String toString() {
         return "Personas{" + "idPersona=" + idPersona + ", identificacionP=" + identificacionP + ", nombresP=" + nombresP + ", apellidosP=" + apellidosP + ", direccionP=" + direccionP + ", emailP=" + emailP + ", telefono=" + telefono + '}';
     }
-
 
 
     

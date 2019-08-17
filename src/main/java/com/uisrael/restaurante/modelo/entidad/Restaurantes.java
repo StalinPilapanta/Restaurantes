@@ -6,10 +6,12 @@
 package com.uisrael.restaurante.modelo.entidad;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,9 +20,9 @@ import javax.persistence.Table;
  * @author Stalin
  */
 @Entity
-@Table( name = "restaurantes")
-public class Restaurantes implements Serializable{
-    
+@Table(name = "restaurantes")
+public class Restaurantes implements Serializable {
+
     @SequenceGenerator(name = "RSEQ", sequenceName = "RESTAURANTES_SEQ", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RSEQ")
@@ -31,6 +33,8 @@ public class Restaurantes implements Serializable{
     private String precioPR;
     private String acercaR;
     private String caracteristicas;
+
+    
 
     public Restaurantes() {
     }
@@ -45,6 +49,7 @@ public class Restaurantes implements Serializable{
         this.caracteristicas = caracteristicas;
     }
 
+    
     public int getIdRes() {
         return idRes;
     }
@@ -105,8 +110,5 @@ public class Restaurantes implements Serializable{
     public String toString() {
         return "Restaurantes{" + "idRes=" + idRes + ", nombreR=" + nombreR + ", direccionR=" + direccionR + ", horarioR=" + horarioR + ", precioPR=" + precioPR + ", acercaR=" + acercaR + ", caracteristicas=" + caracteristicas + '}';
     }
-    
-    
-    
-    
+
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Reservas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/welcomePrimefaces.xhtml">     
+            <ui:define name="windowTitle">
+                #{msgs.planetariumTitle}
+            </ui:define> 
+
+            <ui:define name="content">
+
+                <h:form id="idFormularioReservas">
+                    <p:panel id="pIngresoReservas" header="Ingreso Reservas" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+                        <h:panelGrid  id="pgReservas" columns="2">
+
+                            <p:outputLabel id="olReservas" value="Fecha Reserva"></p:outputLabel>
+                            <p:calendar value="#{resercore.fechaR}" pattern="yyyy-MM-dd">
+
+                            </p:calendar>
+
+                            <p:outputLabel value="Hora Reserva"></p:outputLabel>
+                            <p:inputText value="#{resercore.horaR}"></p:inputText>
+
+                        </h:panelGrid>
+
+                        <p:commandButton icon="fa fa-save" value="Guardar" action="#{resercore.insertarReserva()}" update="idFormularioReservas"></p:commandButton>
+                        <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
+                        <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
+
+                    </p:panel>
+
+                    <p:panel>
+
+                        <p:dataTable id="listadReserva" value="#{resercore.listareserva}" var="listadReserva" widgetVar="listadReserva" 
+                                     scrollable="trye" rows="10" scrollRows="20" paginator="true">
+
+                            <p:column headerText="Codigo" >
+                                <p:outputLabel value="#{listadReserva.idR}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Fecha Reserva" filterBy="#{listadReserva.fechaR}" >
+                                <p:outputLabel value="#{listadReserva.fechaR}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Hora Reserva">
+                                <p:outputLabel value="#{listadReserva.horaR}"></p:outputLabel>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

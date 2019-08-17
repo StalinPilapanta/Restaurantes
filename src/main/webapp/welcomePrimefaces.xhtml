@@ -9,10 +9,10 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <title>Menu Principal</title>
             </f:facet>
             <link rel="stylesheet" href="resources/estilos.css"/>
-            
+
         </h:head>
         <style>
             body {
@@ -23,36 +23,42 @@
 
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
                     Aplicación para la reserva de restaurantes
                 </p:layoutUnit>
 
+                <p:tabMenu activeIndex="#{param.i}">
+                    <p:menuitem value="Personas" outcome="/xhtml/Personas" icon="fa fa-user">
+                        <f:param name="i" value="0" />
+                    </p:menuitem>
+                    
+                    <p:menuitem value="Restaurantes" outcome="/xhtml/Restaurantes" icon="fa fa-cutlery">
+                        <f:param name="i" value="0" />
+                    </p:menuitem>
+                    
+                    <p:menuitem value="Mesas" outcome="/xhtml/Mesas" icon="fa fa-coffee">
+                        <f:param name="i" value="0" />
+                    </p:menuitem>
+                    
+                     <p:menuitem value="Horarios" outcome="/xhtml/horarios" icon="fa fa-calendar">
+                        <f:param name="i" value="0" />
+                    </p:menuitem>
+                    
+                     <p:menuitem value="Reservas" outcome="/xhtml/Reservas" icon="fa fa-calendar">
+                        <f:param name="i" value="0" />
+                    </p:menuitem>
+                    
+                    
+                </p:tabMenu>
+
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h1>Reserva el mejor restaurante de la ciudad</h1>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="200" header="Menu" collapsible="true">
-
-                    <p:menu toggleable="true" style="border: 0px;" >
-                        <p:submenu label="Ingresar">
-                            <p:menuitem value="Personas"  icon="fa fa-user" outcome="/xhtml/Personas" />
-                            <p:menuitem value="Restaurantes" icon="fa fa-male" outcome="/xhtml/Restaurantes" />
-                            <p:menuitem value="Horarios" icon="fa fa-male" outcome="/xhtml/horarios" />
-                            <p:menuitem value="Mesas" icon="fa fa-male" outcome="/xhtml/Mesas" />
-
-                        </p:submenu>
-
-                        <p:submenu label="Asignar">
-                            <p:menuitem value="Personas" outcome="/xhtml/Personas" />
-                            <p:menuitem value="Restaurantes" outcome="/xhtml/Restaurantes" />
-
-                        </p:submenu>
-                    </p:menu>
-                </p:layoutUnit>
+                
 
                 <p:layoutUnit position="center">
-                    Aplicacion para la reserva de restaurantes favoritos
                     <ui:insert name="content"/>
                 </p:layoutUnit>
 

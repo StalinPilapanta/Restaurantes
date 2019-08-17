@@ -7,59 +7,67 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Horarios</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:form id="idFormularioHorarios">
-            <p:panel id="pIngresoHorarios" header="Ingreso de Horarios" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
-                <h:panelGrid  id="pgHorarios" columns="2">
+        <ui:composition template="/welcomePrimefaces.xhtml">     
+            <ui:define name="windowTitle">
+                #{msgs.planetariumTitle}
+            </ui:define> 
 
-                    <p:outputLabel id="olHorarios" value="Horario"></p:outputLabel>
-                    <p:inputText id="itHorarios" value="#{horacore.hora}"></p:inputText>
+            <ui:define name="content">
+                <h:form id="idFormularioHorarios">
+                    <p:panel id="pIngresoHorarios" header="Ingreso de Horarios" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+                        <h:panelGrid  id="pgHorarios" columns="2">
 
-                    <p:outputLabel value="Recargo"></p:outputLabel>
-                    <p:inputText value="#{horacore.recargo}"></p:inputText>
+                            <p:outputLabel id="olHorarios" value="Horario"></p:outputLabel>
+                            <p:inputText id="itHorarios" value="#{horacore.hora}"></p:inputText>
 
-                    <p:outputLabel value="Detalle del horario"></p:outputLabel>
-                    <p:inputText value="#{horacore.detalle}"></p:inputText>
+                            <p:outputLabel value="Recargo"></p:outputLabel>
+                            <p:inputText value="#{horacore.recargo}"></p:inputText>
 
-                </h:panelGrid>
+                            <p:outputLabel value="Detalle del horario"></p:outputLabel>
+                            <p:inputText value="#{horacore.detalle}"></p:inputText>
 
-                <p:commandButton icon="fa fa-save" value="Guardar" action="#{horacore.insertarHorario()}" update="idFormularioHorarios"></p:commandButton>
-                <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
-                <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
+                        </h:panelGrid>
 
-            </p:panel>
+                        <p:commandButton icon="fa fa-save" value="Guardar" action="#{horacore.insertarHorario()}" update="idFormularioHorarios"></p:commandButton>
+                        <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
+                        <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
 
-            <p:panel>
+                    </p:panel>
 
-                <p:dataTable id="listadHorarios" value="#{horacore.listaHorario}" var="listadHorarios" widgetVar="listadHorarios" 
-                             scrollable="trye" rows="10" scrollRows="20" paginator="true">
+                    <p:panel>
 
-                    <p:column headerText="Codigo" filterBy="#{listadHorarios.idH}">
-                        <p:outputLabel value="#{listadHorarios.idH}"></p:outputLabel>
-                    </p:column>
-                    
-                   
-                    
-                    <p:column headerText="Horario">
-                        <p:outputLabel value="#{listadHorarios.hora}"></p:outputLabel>
-                    </p:column>
-                    
-                    <p:column headerText="Recargo">
-                        <p:outputLabel value="#{listadHorarios.recargo}"></p:outputLabel>
-                    </p:column>
-                    
-                    <p:column headerText="Detalle del horario">
-                        <p:outputLabel value="#{listadHorarios.detalle}"></p:outputLabel>
-                    </p:column>
-                    
-                </p:dataTable>
-            </p:panel>
-        </h:form>
+                        <p:dataTable id="listadHorarios" value="#{horacore.listaHorario}" var="listadHorarios" widgetVar="listadHorarios" 
+                                     scrollable="trye" rows="10" scrollRows="20" paginator="true">
 
+                            <p:column headerText="Codigo" filterBy="#{listadHorarios.idH}">
+                                <p:outputLabel value="#{listadHorarios.idH}"></p:outputLabel>
+                            </p:column>
+
+
+
+                            <p:column headerText="Horario">
+                                <p:outputLabel value="#{listadHorarios.hora}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Recargo">
+                                <p:outputLabel value="#{listadHorarios.recargo}"></p:outputLabel>
+                            </p:column>
+
+                            <p:column headerText="Detalle del horario">
+                                <p:outputLabel value="#{listadHorarios.detalle}"></p:outputLabel>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

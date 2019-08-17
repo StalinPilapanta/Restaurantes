@@ -36,8 +36,7 @@ public class Personas implements Serializable{
     private String emailP;
     private String telefono;
     
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "fkPersonas")
-    private List<Reservas> fkidReservas;
+
 
     public Personas() {
     }
@@ -52,13 +51,7 @@ public class Personas implements Serializable{
         this.telefono = telefono;
     }
 
-    public List<Reservas> getFkidReservas() {
-        return fkidReservas;
-    }
-
-    public void setFkidReservas(List<Reservas> fkidReservas) {
-        this.fkidReservas = fkidReservas;
-    }
+   
     
     public int getIdPersona() {
         return idPersona;
